@@ -17,15 +17,7 @@ public struct ToolbarButtonStyle : ButtonStyle {
     
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.system(.body, design: .rounded, weight: .semibold))
-            .symbolRenderingMode(.hierarchical)
-            .foregroundStyle(.primary)
-            .padding(.all, 4)
-            .background {
-                Circle()
-                    .foregroundStyle(.primary.quinary)
-            }
-            .labelStyle(.iconOnly)
+            .labelStyle(ToolbarLabelStyle())
             .overlay {
                 if configuration.isPressed {
                     Circle()
