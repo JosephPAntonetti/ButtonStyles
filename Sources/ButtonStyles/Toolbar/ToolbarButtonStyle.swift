@@ -9,6 +9,8 @@ import SwiftUI
 
 public struct ToolbarButtonStyle : ButtonStyle {
     
+    public init(){}
+    
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.system(.body, design: .rounded, weight: .semibold))
