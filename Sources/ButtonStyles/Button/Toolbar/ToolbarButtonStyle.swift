@@ -9,7 +9,11 @@ import SwiftUI
 
 public struct ToolbarButtonStyle : ButtonStyle {
     
-    public init(){}
+    private let color : Color
+    
+    public init(_ color : Color = .accentColor){
+        self.color = color
+    }
     
     public func makeBody(configuration: Configuration) -> some View {
         configuration.label
@@ -21,6 +25,7 @@ public struct ToolbarButtonStyle : ButtonStyle {
                 Circle()
                     .foregroundStyle(.primary.quinary)
             }
+            .labelStyle(.iconOnly)
             .overlay {
                 if configuration.isPressed {
                     Circle()
@@ -29,6 +34,7 @@ public struct ToolbarButtonStyle : ButtonStyle {
                         .shadow(radius: configuration.isPressed ? 4 : 0)
                 }
             }
+            .foregroundStyle(color)
     }
 }
 
@@ -43,8 +49,7 @@ public struct ToolbarButtonStyle : ButtonStyle {
                 }
                 ToolbarItem(placement: .cancellationAction) {
                     Button("", systemImage: "highlighter") {}
-                        .buttonStyle(ToolbarButtonStyle())
-                        .foregroundStyle(.green)
+                        .buttonStyle(ToolbarButtonStyle(.green))
                 }
             }
     }
